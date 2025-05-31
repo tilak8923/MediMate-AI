@@ -1,6 +1,8 @@
 // src/app/api/genkit/[...slug]/route.ts
-import { genkitApi } from '@genkit-ai/next';
+import appRoute from '@genkit-ai/next';
 import '@/ai/dev'; // Ensure flows are loaded
+import { answerMedicalQuestionsFlow } from '@/ai/flows/answer-medical-questions';
 
 // Use the Genkit API route handler
-export const { GET, POST } = genkitApi();
+const routeHandler = appRoute(answerMedicalQuestionsFlow);
+export { routeHandler as GET, routeHandler as POST };
